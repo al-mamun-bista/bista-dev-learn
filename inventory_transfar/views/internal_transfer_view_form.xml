@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- Action for Open the form view from menu -->
+        <record id="action_internal_transfer_form" model="ir.actions.act_window">
+                <field name="name">Internal Transfer</field>
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">internal.transfer</field>
+                <field name="context">{}</field>
+                <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menu for call the action which open the form of internal.transfer model -->
+        <menuitem id="menu_internal_transfer"
+                name="Internal Transfer"
+                sequence='5'
+                parent='stock.menu_stock_root'
+                action='action_internal_transfer_form'
+               
+        /> 
+        <!-- Form View -->
+        <record id="view_internal_transfer_form" model="ir.ui.view">
+                <field name="name">internal.transfer.form</field>
+                <field name="model">internal.transfer</field>
+                <field name="arch" type="xml">
+                    <form string="Internal Transfer">
+                        <header>
+                            <button string="Confirm" name="action_confirm" type="object" class="oe_highlight" states='draft'/>
+                            <button string="Create Picking" name="create_picking" type="object" class="oe_highlight" states='confirmed'/>
+                            <button string="Delivery" name="button_delivery" type="object" class="oe_highlight" states='sent'/>
+                            <field name="hide" invisible='True'></field>
+                            <button string="Receive" name="button_receive" type="object" class="oe_highlight"  attrs="{'invisible':['|',('hide','=',True),('state','in',['draft','confirmed','sent','received'])]}"/>
+                            <field name="state" widget="statusbar"/>
+                        </header>
+                        <sheet>
+                            <div class="oe_button_box" name="button_box">
+                                <button class="oe_stat_button" name="button_smart"  type="object" icon="fa-car" states='sent'>
+                                    <field name="lable"></field>
+                                </button>
+                            </div>
+                            <div class="oe_title">
+                                <h1>
+                                    <field name="name"></field>
+                                </h1>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="partner_id" attrs="{'readonly':[('state','not in',['draft'])]}"/>
+                                    <field name="location_from_id" attrs="{'readonly':[('state', 'not in', ['draft'])]}"/>
+                                    <field name="location_destination_id" attrs="{'readonly':[('state', 'not in', ['draft'])]}"/>
+                                </group>
+                                <group>
+                                    <field name="date" attrs="{'readonly':[('state', 'not in', ['draft'])]}"/>
+                                    <field name="user_id" attrs="{'readonly':[('state', 'not in', ['draft'])]}"/>
+                                    <field name="user_dest_id" attrs="{'readonly':[('state', 'not in', ['draft'])]}"/>
+                                </group>
+                            </group>   
+                            <notebook>
+                                <page string="Transfer">
+                                    <field name="transfer_ids" attrs="{'readonly':[('state','=','confirmed')]}">
+                                        <tree editable="bottom">
+                                            <field name="product_id" />
+                                            <field name="product_qty"/>
+                                            <field name="lot_id" />
+                                            <field name="uom_id" />
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </sheet>
+                    </form>
+                </field>    
+        </record>
+        <!--Tree View  -->
+        <record id="view_internal_transfer_tree" model="ir.ui.view">
+                <field name="name">internal.transfer.tree</field>
+                <field name="model">internal.transfer</field>
+                <field name="arch" type="xml">
+                    <tree>
+                        <field name="partner_id"/>
+                        <field name="location_from_id"/>
+                        <field name="location_destination_id"/>
+                        <field name="state"/>
+                    </tree>
+                </field>
+        </record>
+</odoo>                

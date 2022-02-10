@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_internal_transfer_custom,access.internal.transfer.user,model_internal_transfer,inventory_transfar.group_user,1,1,1,0
+access_internal_transfer_custom_line,access.internal.transfer.user.line,model_internal_transfer_line,inventory_transfar.group_user,1,1,1,0

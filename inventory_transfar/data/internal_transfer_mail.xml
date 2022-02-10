@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="mail_transfer_mail_template" model="mail.template">
+            <field name="name">Internal Transfer</field>
+            <field name="email_from">${user.email}</field>
+            <field name="subject">Internal Transfer Confirm order ${object.name}</field>
+            <field name="lang">${object.lang}</field>
+            <field name="model_id" ref="model_internal_transfer"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html">
+                <![CDATA[
+                    Hello Sir,<br/>
+                    Kindly verify the transfer order <br/>
+                    TRansfer Number:${object.name}<br/>
+                    Source Location:${object.location_from_id.name} <br/>
+                    Destination Location:${object.location_destination_id.name} <br/>
+                ]]>
+            </field>
+        </record>
+    </data>
+</odoo>

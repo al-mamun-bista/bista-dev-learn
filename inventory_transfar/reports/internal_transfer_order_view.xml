@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_transfer_order">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <center><h1>Internal Transfer Order</h1></center>  
+                        <center><h3 ><span t-field="o.name"/></h3></center>
+                        <table>
+                            <tbody> 
+                                <tr>
+                                    <td style="font-weight:bold;">Employe<![CDATA[&nbsp;]]></td>
+                                    <td colspan="4">
+                                        :<![CDATA[&nbsp;]]><span t-field="o.partner_id"/>
+                                    </td>
+                                    <td style="text-align:right;width:65%;font-weight:bold">
+                                        Date
+                                    </td>
+                                    <td>
+                                        :<![CDATA[&nbsp;]]><span t-field="o.date"  t-options='{"format": "dd-MM-yyyy"}'/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Source<![CDATA[&nbsp;]]></td>
+                                    <td colspan="4">
+                                        :<![CDATA[&nbsp;]]><span t-field="o.location_from_id"/>
+                                    </td>
+                                    <td style="text-align:right;width:65%;font-weight:bold">
+                                        User
+                                    </td>
+                                    <td>
+                                        :<![CDATA[&nbsp;]]><span t-field="o.user_id"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="font-weight:bold;">Destination<![CDATA[&nbsp;]]></td>
+                                    <td colspan="4">
+                                        :<![CDATA[&nbsp;]]><span t-field="o.location_destination_id"/>
+                                    </td>
+                                </tr>
+                            </tbody> 
+                        </table>
+                        <br/>
+                        <center>
+                            <table class="table table-condensed table-bordered tableau">
+                                <thead>
+                                    <tr style="border: 1px solid black;">
+                                        <th style="border: 1px solid black;">S/N</th>
+                                        <th style="border: 1px solid black;">Name</th>
+                                        <th style="border: 1px solid black;">Quantity</th>
+                                        <th style="border: 1px solid black;">Lot/Serial</th>
+                                        <th style="border: 1px solid black;">Unit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="o.transfer_ids" t-as="line">
+                                        <td style="border: 1px solid black;text-align:center">
+                                            <t t-esc="line_index+1"/>
+                                        </td>
+                                        <td style="border: 1px solid black;text-align:center">
+                                            <t t-esc="line.product_id.name"/>
+                                        </td>
+                                        <td style="border: 1px solid black;text-align:center">
+                                            <t t-esc="line.product_qty"/>
+                                        </td>
+                                        <td style="border: 1px solid black;text-align:center">
+                                            <t t-esc="line.lot_id.name"/>
+                                        </td>
+                                        <td style="border: 1px solid black;text-align:center">
+                                            <t t-esc="line.uom_id.name"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </center> 
+                    </div>
+                </t>    
+           </t>
+        </t>
+    </template>
+</odoo>            
