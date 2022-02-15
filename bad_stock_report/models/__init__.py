@@ -1,0 +1,1 @@
+from . import bad_stock_report_config

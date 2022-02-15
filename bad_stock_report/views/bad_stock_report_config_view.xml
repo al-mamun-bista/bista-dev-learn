@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+                <!--FORM VIEW-->
+        <record model="ir.ui.view" id="bad_stock_days_config_form">
+            <field name="name">bad.stock.report.config.form</field>
+            <field name="model">bad.stock.report.config</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="days_duration"/>
+                            <field name="user_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+                <!--List View-->
+        <record model="ir.ui.view" id="bad_stock_days_config_list">
+            <field name="name">bad.stock.report.config.tree</field>
+            <field name="model">bad.stock.report.config</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="days_duration"/>
+                    <field name="user_id"/>
+					<!--<button name="get_stock_production_lot_data" string="Search" type="object" class="btn-primary"/>-->
+
+                </tree>
+            </field>
+        </record>
+
+            <!--ACTION BUTTON-->
+        <record id="action_bad_stock_days_config" model="ir.actions.act_window">
+            <field name="name">Bad Stock Days Config</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">bad.stock.report.config</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Bad Stock Days Config
+                </p>
+            </field>
+        </record>
+
+            <!--REPORT MENUITEM IN INTERFACE-->
+        <menuitem id="menu_bad_stock_days_config"
+            name="Bad Stock Days Config"
+            parent="stock.menu_stock_config_settings"
+            action="action_bad_stock_days_config"
+        />
+
+    </data>
+</odoo>
+
