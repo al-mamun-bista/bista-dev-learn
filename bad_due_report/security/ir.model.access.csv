@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_due_days_mail_config,access.due.days.mail.config,model_due_days_mail_config,,1,1,1,1
+access_bad_due_report,access.bad.due.report,model_bad_due_report,,1,1,1,1

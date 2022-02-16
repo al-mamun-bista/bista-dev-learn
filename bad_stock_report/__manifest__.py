@@ -3,7 +3,7 @@
 
 {
     'name': 'Bad Stock Report',
-    'author': 'Mokhlesur Rahman Mahin',
+    'author': 'Mokhlesur Rahman Mahin2',
     'category': '',
     'version': '1.0',
     'description': """Bad Stock Report""",
