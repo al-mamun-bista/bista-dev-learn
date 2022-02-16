@@ -10,11 +10,14 @@
     'summary': 'Bad Stock Report',
     'sequence': 10,
     'website': 'https://www.google.com',
-    'depends': [],
+    'depends': ['mail'],
     'license': 'LGPL-3',
     'data': [
         'security/ir.model.access.csv',
         'views/bad_stock_report_config_view.xml',
+        'views/menu.xml',
+        'reports/report.xml',
+        'reports/bad_stock_report_view.xml'
     ],
     "images": [],
     'demo': [],
