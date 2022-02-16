@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_bad_stock" model="ir.actions.report">
+        <field name="name">Bad Stock Report</field>
+        <field name="model">bad.stock.report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">bad_stock_report.report_bad_stock</field>
+        <field name="report_file">bad_stock_report.report_bad_stock</field>
+        <field name="binding_model_id" ref="model_bad_stock_report"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
+

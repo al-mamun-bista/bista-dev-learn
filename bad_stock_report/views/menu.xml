@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+   	<record id="action_bad_stock_report" model="ir.actions.server">
+        <field name="name">Action For Execute</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_bad_stock_report"/>
+        <field name="state">code</field>
+        <field name="code">action = model.bad_stock_data()</field>
+    </record>
+
+
+    <menuitem id="menu_bad_stock_report"
+              name="Bad Stock Report"
+              groups="base.group_user"
+              sequence='102'
+              parent='stock.menu_warehouse_report'
+              action='action_bad_stock_report'
+    />
+</odoo>
