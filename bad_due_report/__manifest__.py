@@ -17,6 +17,7 @@
         'views/due_days_mail_config.xml',
         'reports/reports.xml',
         'reports/bad_due_report.xml',
+        'views/bad_due_report_scheduler.xml',
 
     ],
     "images": [],
