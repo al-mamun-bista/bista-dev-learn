@@ -17,7 +17,8 @@
         'views/bad_stock_report_config_view.xml',
         'views/menu.xml',
         'reports/report.xml',
-        'reports/bad_stock_report_view.xml'
+        'reports/bad_stock_report_view.xml',
+        'views/sheduler_bad_stock.xml'
     ],
     "images": [],
     'demo': [],
