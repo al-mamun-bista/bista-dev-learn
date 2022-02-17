@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <report
+            id="action_bad_due_report_generate"
+            model="bad.due.report"
+            string="Bad Due Report"
+            report_type="qweb-pdf"
+            name="bad_due_report.report_bad_due"
+            file="bad_due_report.report_bad_due"
+        />
+
+        <template id="report_bad_due">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="text-align: center; margin-bottom: 20px">
+                            <h2> Bad Due Report </h2>
+                            <!--<div class="card" style="width: 18rem; margin: 0 auto;">-->
+                                <!--<ul class="list-group list-group-flush">-->
+                                    <!--<li class="list-group-item">Inventory Date: <t t-esc="data[0]['valuation_date']"/></li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        </div>
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Invoice Number</th>
+                                    <th scope="col">Customer</th>
+                                    <th scope="col">Invoice Date</th>
+                                    <th scope="col">Total</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="data" t-as="inv_val">
+                                    <t t-if="inv_val['color'] == 'black'">
+                                        <tr style="color:black">
+                                            <td><t t-esc="inv_val['invoice_num']"/></td>
+                                            <td><t t-esc="inv_val['customer']"/></td>
+                                            <td><t t-esc="inv_val['invoice_date']"/></td>
+                                            <td><t t-esc="inv_val['invoice_amount']"/></td>
+                                        </tr>
+                                    </t>
+
+                                    <t t-if="inv_val['color'] == 'orange'">
+                                        <tr style="color:orange">
+                                            <td><t t-esc="inv_val['invoice_num']"/></td>
+                                            <td><t t-esc="inv_val['customer']"/></td>
+                                            <td><t t-esc="inv_val['invoice_date']"/></td>
+                                            <td><t t-esc="inv_val['invoice_amount']"/></td>
+                                        </tr>
+                                    </t>
+
+                                    <t t-if="inv_val['color'] == 'yellow'">
+                                        <tr style="color:yellow">
+                                            <td><t t-esc="inv_val['invoice_num']"/></td>
+                                            <td><t t-esc="inv_val['customer']"/></td>
+                                            <td><t t-esc="inv_val['invoice_date']"/></td>
+                                            <td><t t-esc="inv_val['invoice_amount']"/></td>
+                                        </tr>
+                                    </t>
+
+                                    <t t-if="inv_val['color'] == 'red'">
+                                        <tr style="color:red">
+                                            <td><t t-esc="inv_val['invoice_num']"/></td>
+                                            <td><t t-esc="inv_val['customer']"/></td>
+                                            <td><t t-esc="inv_val['invoice_date']"/></td>
+                                            <td><t t-esc="inv_val['invoice_amount']"/></td>
+                                        </tr>
+                                    </t>
+
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>
+

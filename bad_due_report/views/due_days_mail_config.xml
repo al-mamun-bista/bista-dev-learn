@@ -47,6 +47,8 @@
             action="action_mail_schedule_days_config"
         />
 
+
+
     </data>
 </odoo>
 

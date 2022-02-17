@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+    <record id="action_bad_due_report" model="ir.actions.server">
+        <field name="name">Bad Due Report</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="bad_due_report.model_bad_due_report" />
+        <!--<field name="binding_model_id" ref="bad_due_report" />-->
+        <field name="state">code</field>
+        <field name="code">action=model.bad_due_report()</field>
+    </record>
+
+        <!--REPORT MENUITEM IN INTERFACE-->
+
+	<menuitem
+        id="submenu_bad_due_report"
+        name="Bad Due Report"
+        parent="account.menu_finance_reports"
+        action="action_bad_due_report"
+    />
+
+</odoo>
